@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Перенаправление...</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ text-align: center;
+ padding: 50px;
+ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+ color: white;
+ }
+ .loader {
+ border: 5px solid #f3f3f3;
+ border-top: 5px solid #3498db;
+ border-radius: 50%;
+ width: 50px;
+ height: 50px;
+ animation: spin 2s linear infinite;
+ margin: 20px auto;
+ }
+ @keyframes spin {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+ }
+ </style>
+</head>
+<body>
+ <h1>⏳ Перенаправляем вас...</h1>
+ <div class="loader"></div>
+ <p>Пожалуйста, подождите</p>
+ <p>Если перенаправление не сработало, <a href="#" id="fallbackLink">нажмите сюда</a></p>
+
+ <script>
+ // Список ваших ссылок
+ const links = [
+ "https://forms.yandex.ru/cloud/68d0f3b5493639a7ce5c2fc7",
+ "https://forms.yandex.ru/cloud/68d0f3a0505690a8e6c6eb2c",
+ "https://forms.yandex.ru/cloud/68d0dd51d0468896ca35675d",
+ "https://forms.yandex.ru/cloud/68d10449505690accdc6ea9f",
+ "https://forms.yandex.ru/cloud/68d1055b505690accdc6eb44",
+ "https://forms.yandex.ru/cloud/68d10675068ff0f00a5d127b",
+ "https://forms.yandex.ru/cloud/68d10735f47e73f1b79c7e58",
+ "https://forms.yandex.ru/cloud/68d107c4493639ac075c2eb8"
+ ];
+
+ // Функция для случайного выбора ссылки
+ function getRandomLink() {
+ const randomIndex = Math.floor(Math.random() * links.length);
+ return links[randomIndex];
+ }
+
+ // Получаем случайную ссылку
+ const randomLink = getRandomLink();
+ 
+ // Обновляем fallback ссылку
+ document.getElementById('fallbackLink').href = randomLink;
+ 
+ // Перенаправляем через 1 секунду (можно изменить)
+ setTimeout(() => {
+ window.location.href = randomLink;
+ }, 1000);
+ </script>
+</body>
+</html>
